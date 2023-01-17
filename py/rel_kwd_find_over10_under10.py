@@ -20,7 +20,7 @@ import time
 # 1. 데이터 가져오기 
 
 ## [1] 메타정보 가져오기 
-meta_df = pd.read_csv('/home/ubuntu/data/meta.csv')
+meta_df = pd.read_csv('/Users/SSAFY/Data/data/meta.csv')
 print('-'*50)
 print('meta data is ' )
 print(meta_df)
@@ -34,10 +34,10 @@ kwd_try = str(kwd_try).zfill(2)          # 01과 같은 형식으로 만들어 주기
 
 
 ## [2] keywords 가져오기
-kwds = pd.read_csv(f'/home/ubuntu/data/kwd/{kwd_filedate}_{kwd_try}_kwd.csv')
+kwds = pd.read_csv(f'/Users/SSAFY/Data/data/kwd/{kwd_filedate}_{kwd_try}_kwd.csv')
 kwd_lst = kwds['kwd_name'].tolist()
 kwd_set = set(kwd_lst)
-with open(f'/home/ubuntu/data/kwd/{kwd_filedate}_{kwd_try}_kwd_name_id.pickle', 'rb') as f:
+with open(f'/Users/SSAFY/Data/data/kwd/{kwd_filedate}_{kwd_try}_kwd_name_id.pickle', 'rb') as f:
     kwds_name_id = pickle.load(f)
 
     
@@ -61,13 +61,13 @@ today = today.date().strftime('%Y%m%d')
 
 
 ### (1) 전체와 DB용 둘다 가져오기
-article_filename_lst = glob.glob(f'/home/ubuntu/data/article/{two_days_ago}*.csv')
-article_filename_lst += glob.glob(f'/home/ubuntu/data/article/{one_days_ago}*.csv')
-article_filename_lst += glob.glob(f'/home/ubuntu/data/article/{today}*.csv')
+article_filename_lst = glob.glob(f'/Users/SSAFY/Data/data/article/{two_days_ago}*.csv')
+article_filename_lst += glob.glob(f'/Users/SSAFY/Data/data/article/{one_days_ago}*.csv')
+article_filename_lst += glob.glob(f'/Users/SSAFY/Data/data/article/{today}*.csv')
 
-article_filename_lst_subtract = glob.glob(f'/home/ubuntu/data/article/{two_days_ago}*db.csv')
-article_filename_lst_subtract += glob.glob(f'/home/ubuntu/data/article/{one_days_ago}*db.csv')
-article_filename_lst_subtract += glob.glob(f'/home/ubuntu/data/article/{today}*db.csv')
+article_filename_lst_subtract = glob.glob(f'/Users/SSAFY/Data/data/article/{two_days_ago}*db.csv')
+article_filename_lst_subtract += glob.glob(f'/Users/SSAFY/Data/data/article/{one_days_ago}*db.csv')
+article_filename_lst_subtract += glob.glob(f'/Users/SSAFY/Data/data/article/{today}*db.csv')
 
 
 ### (2) 전체에서 DB용 제외해주기 (중복되기 때문)
@@ -121,9 +121,9 @@ print('over_10_article_df의 형태 ')
 print(over_10_article_df.head())
 
 ## [3] 생성물 저장하기
-over_10_article_df.to_csv(f'/home/ubuntu/data/rel_kwd/{today}_over_10_article_df.csv', index=False, header=True)
+over_10_article_df.to_csv(f'/Users/SSAFY/Data/data/rel_kwd/{today}_over_10_article_df.csv', index=False, header=True)
 under_10_kwd_df = pd.DataFrame({'under_10_kwd_lst':under_10_kwd_lst})
-under_10_kwd_df.to_csv(f'/home/ubuntu/data/rel_kwd/{today}_under_10_kwd_df.csv', index=False, header=True)
+under_10_kwd_df.to_csv(f'/Users/SSAFY/Data/data/rel_kwd/{today}_under_10_kwd_df.csv', index=False, header=True)
 
 print(f'10개 이상의 기사가 존재하는 키워드들의 기사 dataframe 저장됨 : {today}_over_10_article_df.csv ')
 print(f'10개 이상의 기사가 존재하는 키워드 개수 : {len(over_10_kwd_lst)}')

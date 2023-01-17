@@ -8,10 +8,10 @@ import pandas as pd
 import urllib
 
 import pandas as pd
-mysql_df = pd.read_csv(f'/home/ubuntu/data/mysql.csv')
+mysql_df = pd.read_csv(f'/Users/SSAFY/Data/data/mysql.csv')
 password = mysql_df.loc[0,'password']
-host="k7d102.p.ssafy.io:3306"
-user="ssafy"
+host="www.easssue.com:3306"
+user="root"
 password = urllib.parse.quote_plus(password)  # 특수문자 때문에, parse 해줘야 함
 database="easssue_data"
 
@@ -26,8 +26,8 @@ from _mysql_connector import MySQLInterfaceError
 
 mydb = mysql.connector.connect(
   host="k7d102.p.ssafy.io",
-  user="ssafy",
-  password="j^8t21e-3fuh",
+  user="root",
+  password="",
   database="easssue_data"
 )
 
@@ -46,7 +46,7 @@ sql = "INSERT INTO article (article_id, category_id, title, link, pub_date, hit,
 # 2. 데이터 로드
 
 import pandas as pd
-meta_df = pd.read_csv('/home/ubuntu/data/meta.csv')
+meta_df = pd.read_csv('/Users/SSAFY/Data/data/meta.csv')
 print('-'*50)
 print('meta data is ' )
 print(meta_df)
@@ -58,7 +58,7 @@ article_try = str(article_try).zfill(2)  # 01과 같은 형식으로 만들어 주기
 kwd_try = str(kwd_try).zfill(2)          # 01과 같은 형식으로 만들어 주기
 
 
-article_df = pd.read_csv(f'/home/ubuntu/data/article/{article_filedate}_{article_try}_article_db.csv')
+article_df = pd.read_csv(f'/Users/SSAFY/Data/data/article/{article_filedate}_{article_try}_article_db.csv')
 article_df = article_df[['article_id', 'category_id', 'from_kwd_id' ,'title', 'link', 'pub_date', 'hit', 'summary', 'img']]
 
 '''

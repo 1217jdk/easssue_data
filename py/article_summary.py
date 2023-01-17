@@ -20,7 +20,7 @@ from scipy.linalg import solve
 
 ## data load
 import pandas as pd
-meta_df = pd.read_csv('/home/ubuntu/data/meta.csv')
+meta_df = pd.read_csv('/Users/SSAFY/Data/data/meta.csv')
 
 print('-'*50)
 print('meta data is ' )
@@ -29,7 +29,7 @@ print('-'*50)
 
 max_article_id, article_filedate, article_try = meta_df.loc[0,['max_article_id','article_filedate','article_try']]
 article_try = str(article_try).zfill(2)
-original_df = pd.read_csv(f'/home/ubuntu/data/article/{article_filedate}_{article_try}_article.csv')
+original_df = pd.read_csv(f'/Users/SSAFY/Data/data/article/{article_filedate}_{article_try}_article.csv')
 df = original_df.drop_duplicates(subset=['link'])
 
 num_of_duplicated_article = len(df)
@@ -37,7 +37,7 @@ print(f'전체 {len(original_df)}개의 기사 중, { num_of_duplicated_article } 개의 
 
 
 ## stopword
-with open('/home/ubuntu/data/stopwords.txt', 'r') as f:
+with open('/Users/SSAFY/Data/data/stopwords.txt', 'r') as f:
     stopwords_lst = f.readlines()    # line 1개 짜리로 이루어져 있
     stopwords_str = stopwords_lst[0]
     stopwords_str = stopwords_str.split()
@@ -173,5 +173,5 @@ for i in range(len(return_dict)):
     article_df = pd.concat([article_df, cur_df], ignore_index=True)
 
 
-article_df.to_csv(f'/home/ubuntu/data/article/{article_filedate}_{article_try}_article_db.csv', index=False, header=True)
+article_df.to_csv(f'/Users/SSAFY/Data/data/article/{article_filedate}_{article_try}_article_db.csv', index=False, header=True)
 print(f'요약이 완료되어, local에 csv파일을 저장했습니다.')

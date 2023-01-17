@@ -156,7 +156,7 @@ def get_count(under_10_from_kwd_name_lst, under_10_full_description_lst, under_1
 
 
 ## [1] 메타정보 가져오기 
-meta_df = pd.read_csv('/home/ubuntu/data/meta.csv')
+meta_df = pd.read_csv('/Users/SSAFY/Data/data/meta.csv')
 print('-'*50)
 print('meta data is ' )
 print(meta_df)
@@ -168,16 +168,16 @@ article_try = str(article_try).zfill(2)  # 01과 같은 형식으로 만들어 주기
 kwd_try = str(kwd_try).zfill(2)          # 01과 같은 형식으로 만들어 주기
 
 ## [2] stopword
-with open('/home/ubuntu/data/stopwords.txt', 'r') as f:
+with open('/Users/SSAFY/Data/data/stopwords.txt', 'r') as f:
     stopwords_lst = f.readlines()    # line 1개 짜리로 이루어져 있음
     stopwords_str = stopwords_lst[0]
     stopwords_str = stopwords_str.split()
     stopwords_set = set(stopwords_str)
 
 ## [3] keywords 가져오기
-kwds = pd.read_csv(f'/home/ubuntu/data/kwd/{kwd_filedate}_{kwd_try}_kwd.csv')
+kwds = pd.read_csv(f'/Users/SSAFY/Data/data/kwd/{kwd_filedate}_{kwd_try}_kwd.csv')
 kwd_lst = kwds['kwd_name']
-with open(f'/home/ubuntu/data/kwd/{kwd_filedate}_{kwd_try}_kwd_name_id.pickle', 'rb') as f:
+with open(f'/Users/SSAFY/Data/data/kwd/{kwd_filedate}_{kwd_try}_kwd_name_id.pickle', 'rb') as f:
     kwds_name_id = pickle.load(f)
 
     
@@ -187,7 +187,7 @@ today = datetime.datetime.now() + datetime.timedelta(hours=9)
 today = today.date().strftime('%Y%m%d')
 
 ### (2) 데이터 가져오기
-under_10_kwd_df = pd.read_csv(f'/home/ubuntu/data/rel_kwd/{today}_under_10_kwd_df.csv')
+under_10_kwd_df = pd.read_csv(f'/Users/SSAFY/Data/data/rel_kwd/{today}_under_10_kwd_df.csv')
 
 
 ### (3) under_10_kwd_lst 생성
@@ -205,7 +205,7 @@ print(f'새로 search 하는 keyword의 개수는 {len(under_10_kwd_lst)}')
 
 ## [1] 네이버 뉴스 api용 id, pwd 리스트
 import pandas as pd
-client_df = pd.read_csv('/home/ubuntu/data/naver_api.csv')
+client_df = pd.read_csv('/Users/SSAFY/Data/data/naver_api.csv')
 client_id_lst = client_df.client_id.tolist()
 client_secret_lst = client_df.client_secret.tolist()
 
@@ -296,7 +296,7 @@ print(rel_kwd_df_under_10.head())
 
 ## [2] over10 가져오기
 import pandas as pd
-rel_kwd_df_over_10 = pd.read_csv(f'/home/ubuntu/data/rel_kwd/{today}_rel_kwd_over_10.csv')
+rel_kwd_df_over_10 = pd.read_csv(f'/Users/SSAFY/Data/data/rel_kwd/{today}_rel_kwd_over_10.csv')
 print('10개 이상 기사 가진 키워드의 결과물 가져오기 완료')
 
 ## [3] under10, over10 합치기
@@ -314,7 +314,7 @@ rel_kwd_df = rel_kwd_df[['from_kwd_id' , 'to_kwd_id', 'reg_date']]
 
 
 ## [5] 로컬에 저장하기
-rel_kwd_df.to_csv(f'/home/ubuntu/data/rel_kwd/{today}_rel_kwd.csv', index=False, header=True)
+rel_kwd_df.to_csv(f'/Users/SSAFY/Data/data/rel_kwd/{today}_rel_kwd.csv', index=False, header=True)
 
 print('저장하기 2/2 : Local에 저장 성공')
 

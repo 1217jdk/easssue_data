@@ -266,7 +266,7 @@ def get_description_image(df, idx, return_dict):
 # csv로 저장하기
 def make_df_for_db(return_dict):
     # 1. 메타정보 가져오기
-    meta_df = pd.read_csv('/home/ubuntu/data/meta.csv')
+    meta_df = pd.read_csv('/Users/SSAFY/Data/data/meta.csv')
     max_article_id, article_filedate, article_try, kwd_filedate, kwd_try = meta_df.loc[0,['max_article_id','article_filedate', 'article_try', 'kwd_filedate', 'kwd_try']]
     article_try = str(article_try).zfill(2)  # 01과 같은 형식으로 만들어 주기 
     kwd_try = str(kwd_try).zfill(2)          # 01과 같은 형식으로 만들어 주기
@@ -322,14 +322,14 @@ def make_df_for_db(return_dict):
         article_try = str(1).zfill(2)
     
     ## [4] result_df를 csv로 저장하기
-    result_df.to_csv(f'/home/ubuntu/data/article/{article_filedate}_{article_try}_article.csv', index=False, header=True)
+    result_df.to_csv(f'/Users/SSAFY/Data/data/article/{article_filedate}_{article_try}_article.csv', index=False, header=True)
     print(f'aritlce {len(result_df)}개가 csv로 잘 저장되었습니다.')
     
     ## [5] meta.csv 저장
     meta_df.loc[0,'max_article_id'] = max_article_id+len(result_df) # 넣어주세요
     meta_df.loc[0,'article_filedate'] = article_filedate
     meta_df.loc[0,'article_try'] = article_try
-    meta_df.to_csv('/home/ubuntu/data/meta.csv', header=True, index=False)
+    meta_df.to_csv('/Users/SSAFY/Data/data/meta.csv', header=True, index=False)
     print('meta.csv 가 업데이트 되었습니다.')
 
     return
@@ -338,7 +338,7 @@ def make_df_for_db(return_dict):
 #--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # 1. 메타정보 가져오기 
 import pandas as pd
-meta_df = pd.read_csv('/home/ubuntu/data/meta.csv')
+meta_df = pd.read_csv('/Users/SSAFY/Data/data/meta.csv')
     
 print('-'*50)
 print('meta data is ' )
@@ -351,7 +351,7 @@ kwd_try = str(kwd_try).zfill(2)          # 01과 같은 형식으로 만들어 주기
 
 # 2. 키워드 가져오기
 import pickle
-with open(f'/home/ubuntu/data/kwd/{kwd_filedate}_{kwd_try}_kwd_name_id.pickle', 'rb') as f:
+with open(f'/Users/SSAFY/Data/data/kwd/{kwd_filedate}_{kwd_try}_kwd_name_id.pickle', 'rb') as f:
     kwds_name_id_dict = pickle.load(f)  # { kwd_name : kwd_id } 꼴로 예를들면 { 성장 : 2 }        
 
 kwd_lst = list(kwds_name_id_dict)
@@ -362,7 +362,7 @@ print('키워드 개수 : ',len(kwd_lst))
 # 3. naver api
 import pandas as pd
 
-client_df = pd.read_csv('/home/ubuntu/data/naver_api.csv')
+client_df = pd.read_csv('/Users/SSAFY/Data/data/naver_api.csv')
 
 client_id_lst = client_df.client_id.tolist()
 client_secret_lst = client_df.client_secret.tolist()

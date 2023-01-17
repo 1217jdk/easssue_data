@@ -41,12 +41,12 @@ def get_user_word(user_id, cursor):
     return result
 
 import pandas as pd
-mysql_df = pd.read_csv(f'/home/ubuntu/data/mysql.csv')
+mysql_df = pd.read_csv(f'/Users/SSAFY/Data/data/mysql.csv')
 password = mysql_df.loc[0,'password']
 
 mydb = mysql.connector.connect(
-    host="k7d102.p.ssafy.io",
-    user="ssafy",
+    host="www.easssue.com",
+    user="root",
     password=password,
     database="easssue_data"
 )
@@ -185,11 +185,11 @@ result.drop(columns=['kwd_name'], inplace=True)
 ### DB에 넣기
 ## DB 연결하기
 import pandas as pd
-mysql_df = pd.read_csv(f'/home/ubuntu/data/mysql.csv')
+mysql_df = pd.read_csv(f'/Users/SSAFY/Data/data/mysql.csv')
 password = mysql_df.loc[0,'password']
 
-host="k7d102.p.ssafy.io:3306"
-user="ssafy"
+host="www.easssue.com:3306"
+user="root"
 password = urllib.parse.quote_plus(password)  # 특수문자 때문에, parse 해줘야 함
 database="easssue_data"
 

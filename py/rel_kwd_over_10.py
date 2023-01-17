@@ -98,7 +98,7 @@ def over_10_rel_kwd_search(partial_over_10_kwd_lst, processor_idx, return_dict):
 
 
 ## [1] 메타정보 가져오기 
-meta_df = pd.read_csv('/home/ubuntu/data/meta.csv')
+meta_df = pd.read_csv('/Users/SSAFY/Data/data/meta.csv')
 print('-'*50)
 print('meta data is ' )
 print(meta_df)
@@ -110,7 +110,7 @@ article_try = str(article_try).zfill(2)  # 01과 같은 형식으로 만들어 주기
 kwd_try = str(kwd_try).zfill(2)          # 01과 같은 형식으로 만들어 주기
 
 ## [2] stopword
-with open('/home/ubuntu/data/stopwords.txt', 'r') as f:
+with open('/Users/SSAFY/Data/data/stopwords.txt', 'r') as f:
     stopwords_lst = f.readlines()    # line 1개 짜리로 이루어져 있음
     stopwords_str = stopwords_lst[0]
     stopwords_str = stopwords_str.split()
@@ -118,9 +118,9 @@ with open('/home/ubuntu/data/stopwords.txt', 'r') as f:
 
 
 ## [3] keywords 가져오기
-kwds = pd.read_csv(f'/home/ubuntu/data/kwd/{kwd_filedate}_{kwd_try}_kwd.csv')
+kwds = pd.read_csv(f'/Users/SSAFY/Data/data/kwd/{kwd_filedate}_{kwd_try}_kwd.csv')
 kwd_lst = kwds['kwd_name']
-with open(f'/home/ubuntu/data/kwd/{kwd_filedate}_{kwd_try}_kwd_name_id.pickle', 'rb') as f:
+with open(f'/Users/SSAFY/Data/data/kwd/{kwd_filedate}_{kwd_try}_kwd_name_id.pickle', 'rb') as f:
     kwds_name_id = pickle.load(f)
 
     
@@ -130,7 +130,7 @@ today = datetime.datetime.now() + datetime.timedelta(hours=9)
 today = today.date().strftime('%Y%m%d')
 
 ### (2) 데이터 가져오기
-over_10_article_df = pd.read_csv(f'/home/ubuntu/data/rel_kwd/{today}_over_10_article_df.csv')
+over_10_article_df = pd.read_csv(f'/Users/SSAFY/Data/data/rel_kwd/{today}_over_10_article_df.csv')
 
 
 ### (3) over_10_kwd_lst 생성
@@ -139,9 +139,9 @@ over_10_kwd_lst = list(over_10_article_df.from_kwd_name.unique())
 
 '''
 # 2. DB 연결하기
-host="k7d102.p.ssafy.io:3306"
+host="www.easssue.com:3306"
 user="ssafy"
-password="j^8t21e-3fuh"
+password=""
 password = urllib.parse.quote_plus(password)  # 특수문자 때문에, parse 해줘야 함
 database="easssue_data"
 
@@ -195,7 +195,7 @@ print('rel_kwd_df의 columns : ',rel_kwd_df.columns)
 
 
 ## [3] 확인용
-rel_kwd_df.to_csv(f'/home/ubuntu/data/rel_kwd/{today}_rel_kwd_over_10.csv', index=False, header=True)
+rel_kwd_df.to_csv(f'/Users/SSAFY/Data/data/rel_kwd/{today}_rel_kwd_over_10.csv', index=False, header=True)
 print(f'10개 이상의 기사가 존재하는 키워드들의 연관키워드를 Local에 저장 성공 : {today}_rel_kwd_over_10.csv')
 
 

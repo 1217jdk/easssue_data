@@ -17,14 +17,14 @@ mecab = Mecab()
 
 ## model load
 model_filedate = '20221102'
-count_vec = joblib.load(f'/home/ubuntu/py/models/{model_filedate}_total_count_vec.pkl') 
-tfidf_transformer = joblib.load(f'/home/ubuntu/py/models/{model_filedate}_total_tfidf_transformer.pkl') 
-best_sgd_model = joblib.load(f'/home/ubuntu/py/models/{model_filedate}_total_best_sgd_model.pkl')
+count_vec = joblib.load(f'/Users/SSAFY/Data/py/models/{model_filedate}_total_count_vec.pkl')
+tfidf_transformer = joblib.load(f'/Users/SSAFY/Data/py/models/{model_filedate}_total_tfidf_transformer.pkl')
+best_sgd_model = joblib.load(f'/Users/SSAFY/Data/py/models/{model_filedate}_total_best_sgd_model.pkl')
 
 
 ## data load
 import pandas as pd
-meta_df = pd.read_csv('/home/ubuntu/data/meta.csv')
+meta_df = pd.read_csv('/Users/SSAFY/Data/data/meta.csv')
 
 print('-'*50)
 print('meta data is ' )
@@ -33,7 +33,7 @@ print('-'*50)
 
 max_article_id, article_filedate, article_try = meta_df.loc[0,['max_article_id','article_filedate','article_try']]
 article_try = str(article_try).zfill(2)
-df = pd.read_csv(f'/home/ubuntu/data/article/{article_filedate}_{article_try}_article.csv')
+df = pd.read_csv(f'/Users/SSAFY/Data/data/article/{article_filedate}_{article_try}_article.csv')
 n = len(df)
 
 
@@ -41,7 +41,7 @@ n = len(df)
 # data preprocess ----------------------------------------------------------------------------------------------------
 
 ## stopword
-with open('/home/ubuntu/data/stopwords.txt', 'r') as f:
+with open('/Users/SSAFY/Data/data/stopwords.txt', 'r') as f:
     stopwords_lst = f.readlines()    # line 1∞≥ ¬•∏Æ∑Œ ¿Ã∑ÁæÓ¡Æ ¿÷
     stopwords_str = stopwords_lst[0]
     stopwords_str = stopwords_str.split()
@@ -96,7 +96,7 @@ def make_tokenized_column(df, column_name, tokenizer_lst):
 
 ### re 1 : title and description
 x_test = pd.DataFrame()
-x_test['description'] = df['description'].astype(str).str.replace("[^§°-§æ §ø-§” ∞°-∆R a-z A-Z]", " ")
+x_test['description'] = df['description'].astype(str).str.replace("[^§°-§æ §ø-§” ∞°-?R a-z A-Z]", " ")
 print('x_test¿« ±Ê¿Ã : ', len(x_test))
 
 
@@ -133,7 +133,7 @@ def categoryName_to_categoryId(name : str):
 df['category_id'] = pred
 df['category_id'] = df['category_id'].apply(categoryName_to_categoryId)
 
-df.to_csv(f'/home/ubuntu/data/article/{article_filedate}_{article_try}_article.csv', index=False, header=True)
+df.to_csv(f'/Users/SSAFY/Data/data/article/{article_filedate}_{article_try}_article.csv', index=False, header=True)
 
    
         

@@ -43,7 +43,7 @@ def preprocessing1(sorted_kwds_lst):
 
 
 # 2. 메타정보 가져오기 
-meta_df = pd.read_csv('/home/ubuntu/data/meta.csv')
+meta_df = pd.read_csv('/Users/SSAFY/Data/data/meta.csv')
 print('-'*50)
 print('meta data is ' )
 print(meta_df)
@@ -56,11 +56,11 @@ kwd_try = str(kwd_try).zfill(2)          # 01과 같은 형식으로 만들어 주기
 
 
 # 3. Data 가져오기
-article_df = pd.read_csv(f'/home/ubuntu/data/article/{article_filedate}_{article_try}_article_db.csv')
+article_df = pd.read_csv(f'/Users/SSAFY/Data/data/article/{article_filedate}_{article_try}_article_db.csv')
 article_df = article_df.drop_duplicates(subset=['link'])  # 중복 삭제 
 
-new_kwds = pd.read_csv(f'/home/ubuntu/data/kwd/{kwd_filedate}_{kwd_try}_kwd.csv')
-with open(f'/home/ubuntu/data/kwd/{kwd_filedate}_{kwd_try}_kwd_name_id.pickle', 'rb') as f:
+new_kwds = pd.read_csv(f'/Users/SSAFY/Data/data/kwd/{kwd_filedate}_{kwd_try}_kwd.csv')
+with open(f'/Users/SSAFY/Data/data/kwd/{kwd_filedate}_{kwd_try}_kwd_name_id.pickle', 'rb') as f:
     kwds_name_id = pickle.load(f)
 
 
@@ -204,11 +204,11 @@ import pymysql
 import urllib
 
 import pandas as pd
-mysql_df = pd.read_csv(f'/home/ubuntu/data/mysql.csv')
+mysql_df = pd.read_csv(f'/Users/SSAFY/Data/data/mysql.csv')
 password = mysql_df.loc[0,'password']
 
-host="k7d102.p.ssafy.io:3306"
-user="ssafy"
+host="www.easssue.com:3306"
+user="root"
 password = urllib.parse.quote_plus(password)  # 특수문자 때문에, parse 해줘야 함
 database="easssue_data"
 

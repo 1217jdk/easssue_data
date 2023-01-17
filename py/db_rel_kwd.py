@@ -20,11 +20,11 @@ import time
 
 
 # 1. DB와 연결하기
-mysql_df = pd.read_csv(f'/home/ubuntu/data/mysql.csv')
+mysql_df = pd.read_csv(f'/Users/SSAFY/Data/data/mysql.csv')
 password = mysql_df.loc[0,'password']
 
-host="k7d102.p.ssafy.io:3306"
-user="ssafy"
+host="www.easssue.com:3306"
+user="root"
 password = urllib.parse.quote_plus(password)  # 특수문자 때문에, parse 해줘야 함
 database="easssue_data"
 
@@ -39,7 +39,7 @@ today = datetime.datetime.now() + datetime.timedelta(hours=9)
 today = today.date().strftime('%Y%m%d')
 
 ## [2] 데이터 가져오기
-rel_kwd_df = pd.read_csv(f'/home/ubuntu/data/rel_kwd/{today}_rel_kwd.csv')
+rel_kwd_df = pd.read_csv(f'/Users/SSAFY/Data/data/rel_kwd/{today}_rel_kwd.csv')
 print('local에서 데이터를 잘 가져왔습니다.')
 
 
