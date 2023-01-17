@@ -27,7 +27,7 @@ default_args = {
 }
 
 import pandas as pd
-meta_df = pd.read_csv('/home/ubuntu/data/meta.csv')
+meta_df = pd.read_csv('/Users/SSAFY/Data/data/meta.csv')
 
 max_article_id, article_filedate, article_try, kwd_filedate, kwd_try = meta_df.loc[0,['max_article_id','article_filedate', 'article_try', 'kwd_filedate', 'kwd_try']]
 article_try = str(article_try).zfill(2)
@@ -46,31 +46,31 @@ dag = DAG(
 
 get_article_csv = BashOperator(
     task_id='get_article_csv',
-    bash_command='python3 /home/ubuntu/py/get_article_csv.py',
+    bash_command='python3 /Users/SSAFY/Data/py/get_article_csv.py',
     dag=dag  # if it is not with dag process
 )
 
 category_sgd = BashOperator(
     task_id='category_sgd',
-    bash_command='python3 /home/ubuntu/py/category_sgd_for_real.py',
+    bash_command='python3 /Users/SSAFY/Data/py/category_sgd_for_real.py',
     dag=dag
 )
 
 article_summary = BashOperator(
     task_id='article_summary',
-    bash_command='python3 /home/ubuntu/py/article_summary.py',
+    bash_command='python3 /Users/SSAFY/Data/py/article_summary.py',
     dag=dag
 )
 
 article = BashOperator(
     task_id='article',
-    bash_command='python3 /home/ubuntu/py/db_article.py',
+    bash_command='python3 /Users/SSAFY/Data/py/db_article.py',
     dag=dag
 )
 
 article_kwd = BashOperator(
     task_id='article_kwd',
-    bash_command='python3 /home/ubuntu/py/db_article_kwd.py',
+    bash_command='python3 /Users/SSAFY/Data/py/db_article_kwd.py',
     dag=dag
 )
 
