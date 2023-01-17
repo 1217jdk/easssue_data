@@ -4,11 +4,11 @@
 ## [1] DB 연결1
 import mysql.connector
 import pandas as pd
-mysql_df = pd.read_csv(f'/home/ubuntu/data/mysql.csv')
+mysql_df = pd.read_csv(f'/Users/SSAFY/Data/data/mysql.csv')
 password = mysql_df.loc[0,'password']
 mydb = mysql.connector.connect(
-  host="k7d102.p.ssafy.io",
-  user="ssafy",
+  host="www.easssue.com",
+  user="root",
   password=password,
   database="easssue_data"
 )
@@ -42,7 +42,7 @@ while True:
         break
 
 
-total_kwd_df = pd.read_csv(f'/home/ubuntu/data/kwd/{kwd_filedate_kwd_try}_kwd.csv')
+total_kwd_df = pd.read_csv(f'/Users/SSAFY/Data/data/kwd/{kwd_filedate_kwd_try}_kwd.csv')
 new_kwd_df = total_kwd_df[total_kwd_df['kwd_id']>max_kwd_id]  # 새로 입력된 것들만 가져오기
 print('새로 입력된 키워드 입니다.')
 print(new_kwd_df)
@@ -58,10 +58,10 @@ import pandas as pd
 import urllib
 
 import pandas as pd
-mysql_df = pd.read_csv(f'/home/ubuntu/data/mysql.csv')
+mysql_df = pd.read_csv(f'/Users/SSAFY/Data/data/mysql.csv')
 password = mysql_df.loc[0,'password']
-host="k7d102.p.ssafy.io:3306"
-user="ssafy"
+host="www.easssue.com:3306"
+user="root"
 password = urllib.parse.quote_plus(password)
 database="easssue_data"
 
@@ -79,7 +79,7 @@ print('DB에 키워드가 반영되었습니다.')
 
 # 4. meta csv 바꾸기
 ## [1] 메타정보 가져오기 
-meta_df = pd.read_csv('/home/ubuntu/data/meta.csv')
+meta_df = pd.read_csv('/Users/SSAFY/Data/data/meta.csv')
 max_article_id, article_filedate, article_try, kwd_filedate, kwd_try = meta_df.loc[0,['max_article_id','article_filedate', 'article_try', 'kwd_filedate', 'kwd_try']]
 
 ## [2] update할 kwd_filedate, kwd_try 가져오기
@@ -94,7 +94,7 @@ meta_df['kwd_try'] = kwd_try
 print(meta_df)
 check = input('meta.csv 를 위와 같이 수정하시겠습니까? y/n : ')
 if check == 'y':
-    meta_df.to_csv('/home/ubuntu/data/meta.csv', header=True, index=False)
+    meta_df.to_csv('/Users/SSAFY/Data/data/meta.csv', header=True, index=False)
     print('meta.csv 가 저장되었습니다. ')
 
 else:

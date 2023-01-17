@@ -1,11 +1,11 @@
 # -*- coding: cp949 -*-
 import mysql.connector
 import pandas as pd
-mysql_df = pd.read_csv(f'/home/ubuntu/data/mysql.csv')
+mysql_df = pd.read_csv(f'/Users/SSAFY/Data/data/mysql.csv')
 password = mysql_df.loc[0,'password']
 mydb = mysql.connector.connect(
-  host="k7d102.p.ssafy.io",
-  user="ssafy",
+  host="www.easssue.com",
+  user="root",
   password=password,
   database="easssue_data"
 )

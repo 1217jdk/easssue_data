@@ -6,11 +6,11 @@ import mysql.connector
 from mysql.connector import IntegrityError
 from _mysql_connector import MySQLInterfaceError
 import pandas as pd
-mysql_df = pd.read_csv(f'/home/ubuntu/data/mysql.csv')
+mysql_df = pd.read_csv(f'/Users/SSAFY/Data/data/mysql.csv')
 password = mysql_df.loc[0,'password']
 mydb = mysql.connector.connect(
-  host="k7d102.p.ssafy.io",
-  user="ssafy",
+  host="www.easssue.com",
+  user="root",
   password=password,
   database="easssue_data"
 )
@@ -20,7 +20,7 @@ mycursor = mydb.cursor()
 
 sql = "INSERT INTO category (category_id, category_name) VALUES (%s, %s)"
 
-name_id = {'IT/ê³¼í•™': 1, 'ê²½ì œ':2 ,  'ë¬¸í™”/ìƒí™œ' : 3 , 'ë¯¸ìš©/ê±´ê°•':4,   'ì‚¬íšŒ':5, 'ìŠ¤í¬ì¸ ':6, 'ì—°ì˜ˆ':7, 'ì •ì¹˜':8}
+name_id = {'IT/ê³¼í??': 1, 'ê²½ì??':2 ,  'ë¬¸í??/?ƒí??' : 3 , 'ë¯¸ìš©/ê±´ê??':4,   '?‚¬í?':5, '?¤í¬ì¸?':6, '?—°??':7, '??•ì??':8}
 
 for category_name, category_id in name_id.items():
     category_id = str(category_id)
@@ -31,11 +31,10 @@ for category_name, category_id in name_id.items():
         print(category_id, category_name, "record inserted")
         
     except IntegrityError as e:
-        print("error is : ", e, "category is : ", category_id, cateogory_name)
+        print("error is : ", e, "category is : ", category_id, category_name)
 
 
 
 mydb.commit()
-print('insert ì™„ë£Œ')
 
 
