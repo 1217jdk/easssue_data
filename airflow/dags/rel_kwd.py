@@ -50,33 +50,33 @@ with DAG(
     rel_kwd_find_over10_under10 = BashOperator(
         task_id='rel_kwd_find_over10_under10',
         depends_on_past=False,
-        bash_command='python3 /Users/SSAFY/Data/py/rel_kwd_find_over10_under10.py',
+        bash_command='python3 /root/Data/py/rel_kwd_find_over10_under10.py',
     )
 
     rel_kwd_over_10 = BashOperator(
         task_id='rel_kwd_over_10',
         depends_on_past=False,
-        bash_command='python3 /Users/SSAFY/Data/py/rel_kwd_over_10.py',
+        bash_command='python3 /root/Data/py/rel_kwd_over_10.py',
 
     )
 
     rel_kwd_under_10 = BashOperator(
         task_id='rel_kwd_under_10',
         depends_on_past=False,
-        bash_command='python3 /Users/SSAFY/Data/py/rel_kwd_under_10.py',
+        bash_command='python3 /root/Data/py/rel_kwd_under_10.py',
 
     )
 
     db_rel_kwd = BashOperator(
         task_id='db_rel_kwd',
         depends_on_past=False,
-        bash_command='python3 /Users/SSAFY/Data/py/db_rel_kwd.py',
+        bash_command='python3 /root/Data/py/db_rel_kwd.py',
     )
 
     db_rec_kwd = BashOperator(
         task_id='db_rec_kwd',
         depends_on_past=False,
-        bash_command='python3 /Users/SSAFY/Data/py/db_rec_kwd.py',
+        bash_command='python3 /root/Data/py/db_rec_kwd.py',
     )
 
     rel_kwd_find_over10_under10 >> rel_kwd_over_10 >> rel_kwd_under_10 >> db_rel_kwd >> db_rec_kwd
