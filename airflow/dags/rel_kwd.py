@@ -41,7 +41,7 @@ with DAG(
         default_args=default_args,
         description='keyword relation',
         schedule_interval='30 14 * * *',  # everyday 00:30
-        start_date=datetime(2022, 11, 17, 0, 30, 0),
+        start_date=datetime(2023, 1, 19, 0, 30, 0),
         catchup=False,
         tags=[f'{today}'],
         dagrun_timeout=timedelta(minutes=120),

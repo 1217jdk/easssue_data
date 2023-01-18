@@ -38,7 +38,7 @@ dag = DAG(
     default_args = default_args,
     description = 'get_article_to_db every hour',
     schedule_interval = "0 0-14,16-23 * * *",
-    start_date = datetime(2022, 11, 16),
+    start_date = datetime(2023, 1, 19),
     dagrun_timeout=timedelta(minutes=60),
     catchup=False,
     tags = [f'{article_filedate}_{article_try}'],
