@@ -7,7 +7,6 @@ import numpy as np
 import pandas as pd
 
 
-
 def news_clustering(df):
     # 1. 임베딩
     from sklearn.feature_extraction.text import TfidfVectorizer
@@ -89,8 +88,8 @@ def news_by_kwd(keyword_lst, processor_idx, return_dict, client_id, client_secre
     one_hour_ago = one_hour_ago.strftime('%a, %d %b %Y %H')
     target_times = {cur, one_hour_ago}
     
-    
-    
+
+
     # 3. 키워드 검색하기
     for keyword in tqdm(keyword_lst):
 
@@ -371,7 +370,7 @@ client_secret_lst = client_df.client_secret.tolist()
 
 # 4. 키워드로 기사가져오기
 import multiprocessing
-n = 5*len(client_id_lst)
+n = 3*len(client_id_lst)
 if __name__ == '__main__':
     processes = []
     manager = multiprocessing.Manager()
