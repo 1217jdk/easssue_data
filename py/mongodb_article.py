@@ -170,8 +170,8 @@ article_db_json = json.loads(article_db_df.to_json(force_ascii=False, orient='re
 from pymongo import MongoClient
 
 client = MongoClient('www.easssue.com', 27017)
-db = client.get_database('easssue_test2')
-coll = db.get_collection('test')
+db = client.get_database('easssue_data')
+coll = db.get_collection('article')
 
 ## [2] DB에 넣기
 
