@@ -63,7 +63,7 @@ article_summary = BashOperator(
 )
 
 article = BashOperator(
-    task_id='article & article kwd',
+    task_id='article_with_kwd',
     bash_command='python3 /root/Data/py/mongodb_article.py',
     dag=dag
 )
