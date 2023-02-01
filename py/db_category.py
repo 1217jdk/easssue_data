@@ -19,7 +19,7 @@ mycursor = mydb.cursor()
 
 sql = "INSERT INTO category (category_id, category_name) VALUES (%s, %s)"
 
-name_id = {'IT/ê³¼í??': 1, 'ê²½ì??': 2, 'ë¬¸í??/????': 3, 'ë¯¸ì?/ê±´ê??': 4, '???': 5, '?¤í?ì¸?': 6, '????': 7, '?????': 8}
+name_id = {'IT/°úÇÐ': 1, '°æÁ¦':2 ,  '¹®È­/»ýÈ°' : 3 , '¹Ì¿ë/°Ç°­':4,   '»çÈ¸':5, '½ºÆ÷Ã÷':6, '¿¬¿¹':7, 'Á¤Ä¡':8}
 
 for category_name, category_id in name_id.items():
     category_id = str(category_id)
