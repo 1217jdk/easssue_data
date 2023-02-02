@@ -4,6 +4,7 @@ import pandas as pd
 import pickle
 import copy
 import json
+from datetime import datetime
 
 # 1. 키워드 정제하는 함수 정의
 from tqdm import tqdm
