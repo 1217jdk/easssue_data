@@ -160,6 +160,8 @@ article_db_df['category'] = article_db_df['category'].apply(lambda x: category_n
 
 article_db_df['summary'] = article_db_df['summary'].apply(lambda x: x.split('\n'))
 
+article_db_df['pubDate'] = article_db_df['pubDate'].apply(lambda x: datetime.strptime(x, '%Y-%m-%d %H:%M:%S').isoformat(timespec='milliseconds')+'Z')
+
 article_db_df = article_db_df[['articleId', 'category', 'fromKwd', 'title', 'link', 'pubDate', 'hit', 'summary', 'img', 'kwds']]
 
 article_db_json = json.loads(article_db_df.to_json(force_ascii=False, orient='records'))
