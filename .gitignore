@@ -1,5 +1,6 @@
 data/mysql.csv
 data/naver_api.csv
+data/mongodb_user_info.pickle
 
 # Created by https://www.toptal.com/developers/gitignore/api/python,windows,pycharm,visualstudiocode
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,windows,pycharm,visualstudiocode

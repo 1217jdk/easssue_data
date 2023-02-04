@@ -172,7 +172,10 @@ article_db_json = json.loads(article_db_df.to_json(force_ascii=False, orient='re
 ## [1] DB에 연결
 from pymongo import MongoClient
 
-client = MongoClient('www.easssue.com', 27017)
+with open('/root/Data/data/mongodb_user_info.pickle', 'wb') as f:
+    user_info = pickle.load(f)
+
+client = MongoClient(host='www.easssue.com', port=27017, username=user_info['username'], password=user_info['password'])
 db = client.get_database('easssue_data')
 coll = db.get_collection('article')
 
