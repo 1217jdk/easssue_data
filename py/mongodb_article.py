@@ -4,7 +4,7 @@ import pandas as pd
 import pickle
 import copy
 import json
-from datetime import datetime
+import datetime
 
 # 1. 키워드 정제하는 함수 정의
 from tqdm import tqdm
@@ -168,7 +168,7 @@ article_db_df = article_db_df[['articleId', 'category', 'fromKwd', 'title', 'lin
 article_db_json = json.loads(article_db_df.to_json(force_ascii=False, orient='records'))
 
 for row in article_db_json:
-    row['pubDate'] = datetime.strptime(row['pubDate'], '%Y-%m-%d %H:%M:%S')
+    row['pubDate'] = datetime.datetime.strptime(row['pubDate'], '%Y-%m-%d %H:%M:%S') - datetime.timedelta(hours=9)
 
 # 4. DB에 넣기
 
