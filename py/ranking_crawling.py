@@ -31,7 +31,7 @@ import pandas as pd
 import mysql.connector
 from sqlalchemy import create_engine
 
-trend_df = pd.DataFrame({'rank': rank, 'title': naver_list, 'reg_date': reg_date})
+trend_df = pd.DataFrame({'ranking': rank, 'title': naver_list, 'reg_date': reg_date})
 # print(trend_df.head())
 
 mysql_df = pd.read_csv(f'/root/Data/data/mysql.csv')

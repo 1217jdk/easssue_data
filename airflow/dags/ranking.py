@@ -40,7 +40,7 @@ with DAG(
         dag_id='ranking_to_db',
         default_args=default_args,
         description='ranking crawling',
-        schedule_interval='0 30 * * * ? *',  # every hour:30
+        schedule_interval='30 * * * *',  # every hour:30
         start_date=datetime(2023, 2, 9, 0, 0, 0),
         catchup=False,
         tags=[f'{today}'],
