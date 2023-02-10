@@ -27,7 +27,7 @@ with open('/root/Data/data/mongodb_user_info.pickle', 'rb') as f:
 
 client = MongoClient(host='www.easssue.com', port=27017, username=user_info['username'], password=user_info['password'])
 db = client.get_database('easssue_data')
-coll_al = db.get_collection('article_log')
+coll_al = db.get_collection('articleLog')
 coll_a = db.get_collection('article')
 
 with open(f'/root/Data/data/kwd/20221117_01_kwd_name_id.pickle', 'rb') as f:
@@ -39,7 +39,7 @@ def get_user_word(user_id):
     week_ago = today - datetime.timedelta(days=7)
 
     result = []
-    articles = [item["article_id"] for item in coll_al.find({"user_id": user_id, "click_time": {"$gte": week_ago, "$lte": today}})]
+    articles = [item["articleId"] for item in coll_al.find({"userId": user_id, "clickTime": {"$gte": week_ago, "$lte": today}})]
     for article in articles:
         for item in coll_a.find({"articleId": article}):
             for kwd in item['kwds']:
