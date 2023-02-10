@@ -37,7 +37,7 @@ default_args = {
     # 'trigger_rule': 'all_success'
 }
 with DAG(
-        dag_id='rel_kwd_and_rec_kwd_to_mongodb',
+        dag_id='rel_kwd_and_rec_kwd_from_mongodb',
         default_args=default_args,
         description='keyword relation',
         schedule_interval='30 14 * * *',  # everyday 00:30
