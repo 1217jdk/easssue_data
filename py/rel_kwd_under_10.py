@@ -198,7 +198,7 @@ client_secret_lst = client_df.client_secret.tolist()
 ### (1) 멀티프로세싱 진행
 import multiprocessing
 
-k = 10  # num of jobs of each client
+k = 1  # num of jobs of each client
 n = k * len(client_id_lst)
 
 if __name__ == '__main__':
