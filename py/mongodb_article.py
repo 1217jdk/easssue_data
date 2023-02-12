@@ -156,7 +156,7 @@ article_db_df['kwds'].fillna({i: [] for i in article_db_df.index}, inplace=True)
 article_db_df.rename(columns = {'article_id': 'articleId', 'category_id': 'category', 'from_kwd_name': 'fromKwd', 'pub_date': 'pubDate'}, inplace = True)
 
 # {'IT/과학': 1, '경제':2, '문화/생활': 3, '미용/건강': 4, '사회': 5, '스포츠': 6, '연예': 7, '정치': 8}
-category_name_id = {1: 'IT/과학', 2: '경제', 3: '문화/생활', 4: '미용/건강', 5: '사회', 6: '스포츠', 7: '언어', 8: '정치'}
+category_name_id = {1: 'IT/과학', 2: '경제', 3: '문화/생활', 4: '미용/건강', 5: '사회', 6: '스포츠', 7: '연예', 8: '정치'}
 article_db_df['category'] = article_db_df['category'].apply(lambda x: category_name_id[x])
 
 article_db_df['summary'] = article_db_df['summary'].apply(lambda x: x.split('\n'))
